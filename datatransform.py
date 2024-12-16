@@ -43,6 +43,8 @@ class DataFrameTransform:
                         'jul': 7, 'aug': 8, 'sep': 9, 'oct': 10, 'nov': 11, 'dec': 12}
             self.df[column_name] = self.df[column_name].map(month_map)
             self.df[column_name] = pd.to_numeric(self.df[column_name])
+        except Exception as e:
+            print(f"Error converting 'month' column to integer: {e}")
         return self.df.copy()
         
     def convert_columns(self, column_list: List[str], data_type: str, ignore_errors: bool = True) -> pd.DataFrame:
